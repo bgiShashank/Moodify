@@ -1,0 +1,450 @@
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 24px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 2vh;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 2.8em;
+    font-weight: 700;
+    color: #1a237e;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.logo i {
+    font-size: 1.2em;
+    background: linear-gradient(45deg, #1a237e, #3949ab);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: pulse 2s infinite;
+}
+
+.logo span {
+    background: linear-gradient(45deg, #1a237e, #3949ab, #5c6bc0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    animation: gradientFlow 3s ease infinite;
+}
+
+.logo span::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #1a237e, #3949ab, #5c6bc0);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: lineGrow 2s ease forwards;
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes lineGrow {
+    to { transform: scaleX(1); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.tagline {
+    font-size: 1.2em;
+    color: #666;
+    font-style: italic;
+    margin-top: 4px;
+    text-align: left;
+    padding-left: 2.5em;
+}
+
+h1 {
+    font-size: 1em;
+    text-align: center;
+    margin: 20px 0;
+    color: #1a237e;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+h1::after {
+    display: none;
+}
+h2 {
+    font-size: 1.8em;
+    color: #000000;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+h2::after {
+    display: none;
+}
+.mood-selection {
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    background: linear-gradient(145deg, #1a237e, #283593);
+    padding: 0.5vh 1vw;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    height: 5vh;
+    width: 30%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+    flex-wrap: wrap;
+}
+
+.mood-selection::before {
+    content: 'Select Your Mood';
+    position: absolute;
+    color: white;
+    font-size: 1.1em;
+    font-weight: 500;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.mood-selection:hover::before {
+    opacity: 0;
+}
+
+.mood-selection:hover {
+    height: 12vh;
+    width: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1vh 2vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.mood-selection h2 {
+    display: none;
+}
+
+.mood-btn {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 10px 15px;
+    color: #fff;
+    font-size: 0.9em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 4px;
+    min-width: 80px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.mood-selection:hover .mood-btn {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+
+.mood-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+.mood-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+.mood-btn:hover::before {
+    left: 100%;
+}
+.mood-btn:active {
+    transform: translateY(1px) scale(0.98);
+}
+.mood-btn[data-mood="happy"] {
+    background: linear-gradient(145deg, #FFD700, #FFA500);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.mood-btn[data-mood="sad"] {
+    background: linear-gradient(145deg, #4682B4, #1E90FF);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.mood-btn[data-mood="energetic"] {
+    background: linear-gradient(145deg, #FF4500, #FF6347);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.mood-btn[data-mood="calm"] {
+    background: linear-gradient(145deg, #20B2AA, #48D1CC);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.mood-btn[data-mood="angry"] {
+    background: linear-gradient(145deg, #DC143C, #B22222);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.mood-btn[data-mood="fear"] {
+    background: linear-gradient(145deg, #4B0082, #800080);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.mood-btn[data-mood="love"] {
+    background: linear-gradient(145deg, #FF1493, #FF69B4);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.mood-btn[data-mood="mix"] {
+    background: linear-gradient(145deg, #9370DB, #8A2BE2);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.mood-btn[data-mood="lofi"] {
+    background: linear-gradient(145deg, #2C3E50, #34495E);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.recommendation-section {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.music-player, .wallpaper-section {
+    flex: 1 1 300px;
+    background: #f7f7f7;
+    border-radius: 12px;
+    padding: 20px;
+    min-width: 280px;
+}
+#album-art {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+#song-details {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+#player-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+#player-controls button {
+    background: linear-gradient(145deg, #1a237e, #283593);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+#player-controls button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+#player-controls button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+#player-controls button:hover::before {
+    left: 100%;
+}
+#player-controls button:active {
+    transform: translateY(1px) scale(0.95);
+}
+#play-pause-btn {
+    width: 60px !important;
+    height: 60px !important;
+    font-size: 1.4em !important;
+    background: linear-gradient(145deg, #1a237e, #3949ab) !important;
+}
+#prev-btn, #next-btn {
+    font-size: 1.1em;
+    background: linear-gradient(145deg, #283593, #3949ab);
+}
+#player-controls button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+#player-controls button:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+#player-controls button:disabled::before {
+    display: none;
+}
+.wallpaper-section img {
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-top: 12px;
+}
+.music-player h2, .wallpaper-section h2 {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+    color: #000000;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+.music-player h2::after, .wallpaper-section h2::after {
+    display: none;
+}
+.wallpaper-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+.wallpaper-btn {
+    background: linear-gradient(145deg, #1a237e, #283593);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 25px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+}
+.wallpaper-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+.wallpaper-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+.wallpaper-btn:hover::before {
+    left: 100%;
+}
+.wallpaper-btn:active {
+    transform: translateY(1px) scale(0.98);
+}
+.wallpaper-btn i {
+    font-size: 1.1em;
+}
+#refresh-wallpaper i {
+    transition: transform 0.3s ease;
+}
+#refresh-wallpaper:hover i {
+    transform: rotate(180deg);
+}
+#download-wallpaper {
+    background: linear-gradient(145deg, #1a237e, #3949ab);
+}
+#refresh-wallpaper {
+    background: linear-gradient(145deg, #283593, #3949ab);
+}
+.wallpaper-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+.wallpaper-btn:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+.wallpaper-btn:disabled::before {
+    display: none;
+}
+.header-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0 1vw;
+    position: relative;
+    margin-bottom: 2vh;
+}

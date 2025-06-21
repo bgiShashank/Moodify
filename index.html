@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moodify - Your Mood Based Music & Wallpaper Companion</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header-wrapper">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-music"></i>
+                    <span>Moodify</span>
+                </div>
+                <p class="tagline">Your Mood, Your Music, Your Style</p>
+            </div>
+        </div>
+        <div class="mood-selection">
+            <h2>Select Your Mood</h2>
+            <button class="mood-btn" data-mood="happy"><span>Happy</span></button>
+            <button class="mood-btn" data-mood="sad"><span>Sad</span></button>
+            <button class="mood-btn" data-mood="energetic"><span>Energetic</span></button>
+            <button class="mood-btn" data-mood="calm"><span>Calm</span></button>
+            <button class="mood-btn" data-mood="angry"><span>Angry</span></button>
+            <button class="mood-btn" data-mood="fear"><span>Fear</span></button>
+            <button class="mood-btn" data-mood="love"><span>Love</span></button>
+            <button class="mood-btn" data-mood="mix"><span>Mix</span></button>
+            <button class="mood-btn lofi-btn" data-mood="lofi"><span>Lofi</span></button>
+        </div>
+        <div class="recommendation-section">
+            <div class="music-player">
+                <h2>Music Recommendation</h2>
+                <div id="track-info">
+                    <img id="album-art" src="" alt="Album Art" style="display:none;"/>
+                    <div id="player-controls" style="display:none;">
+                        <button id="prev-btn"><i class="fas fa-backward"></i></button>
+                        <button id="play-pause-btn">
+                            <i class="fas fa-play"></i>
+                            <i class="fas fa-pause"></i>
+                        </button>
+                        <button id="next-btn"><i class="fas fa-forward"></i></button>
+                    </div>
+                    <div id="song-details"></div>
+                </div>
+                <audio id="audio-player" controls style="display:none;"></audio>
+                <input type="range" id="progress-bar" value="0" max="100" style="width:100%;margin-top:10px;">
+                <div id="time" style="text-align:right;font-size:0.9em;">0:00 / 0:30</div>
+            </div>
+            <div class="wallpaper-section">
+                <h2>Wallpaper Recommendation</h2>
+                <img id="wallpaper" src="" alt="Wallpaper" style="max-width:100%; display:none;"/>
+                <div class="wallpaper-controls">
+                    <button id="download-wallpaper" class="wallpaper-btn">
+                        <i class="fas fa-download"></i> Download Wallpaper
+                    </button>
+                    <button id="refresh-wallpaper" class="wallpaper-btn">
+                        <i class="fas fa-sync-alt"></i> Refresh Wallpaper
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
