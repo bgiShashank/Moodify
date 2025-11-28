@@ -277,6 +277,11 @@ h2::after {
 #song-details {
     font-size: 1.1rem;
     margin-bottom: 8px;
+    display: block !important;
+    visibility: visible !important;
+    min-height: 24px;
+    color: #333;
+    font-weight: 500;
 }
 #player-controls {
     display: flex;
